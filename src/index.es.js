@@ -18,6 +18,8 @@ import VeGauge from './packages/gauge'
 import VeTree from './packages/tree'
 import VeLiquidfill from './packages/liquidfill'
 import VeWordcloud from './packages/wordcloud'
+import themes from './theme'
+import echarts from 'echarts'
 
 const components = [
   VeBar,
@@ -42,10 +44,26 @@ const components = [
   VeWordcloud
 ]
 
-function install (Vue, _) {
+function registerTheme (themes = {}) {
+  for (let name in themes) {
+    echarts.registerTheme(name, themes[name])
+  }
+}
+
+function initThemes (Vue, options) {
+  registerTheme(themes)
+  if (options.themes) {
+    registerTheme(options.themes)
+  }
+  Vue.prototype.$THEME = options.theme ? options.theme : 'walden'
+}
+
+function install (Vue, options = {}) {
   components.forEach(component => {
     Vue.component(component.name, component)
   })
+  // 注册主题
+  initThemes(Vue, options)
 }
 
 export {
@@ -69,5 +87,31 @@ export {
   VeTree,
   VeLiquidfill,
   VeWordcloud,
-  install
+  install,
+  echarts
+}
+
+export default {
+  VeBar,
+  VeHistogram,
+  VeRing,
+  VeLine,
+  VePie,
+  VeWaterfall,
+  VeFunnel,
+  VeRadar,
+  VeChart,
+  VeMap,
+  VeBmap,
+  VeAmap,
+  VeSankey,
+  VeHeatmap,
+  VeScatter,
+  VeCandle,
+  VeGauge,
+  VeTree,
+  VeLiquidfill,
+  VeWordcloud,
+  install,
+  echarts
 }

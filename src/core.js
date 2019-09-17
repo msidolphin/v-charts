@@ -15,8 +15,8 @@ import {
 import Loading from './components/loading'
 import DataEmpty from './components/data-empty'
 import {
-  DEFAULT_COLORS,
-  DEFAULT_THEME,
+  // DEFAULT_COLORS,
+  // DEFAULT_THEME,
   STATIC_PROPS,
   ECHARTS_SETTINGS
 } from './constants'
@@ -83,7 +83,12 @@ export default {
     textStyle: [Object, Array],
     animation: Object,
     theme: Object,
-    themeName: String,
+    themeName: {
+      type: String,
+      default () {
+        return this.$THEME
+      }
+    },
     loading: Boolean,
     dataEmpty: Boolean,
     extend: Object,
@@ -96,7 +101,10 @@ export default {
     setOptionOpts: { type: [Boolean, Object], default: true },
     cancelResizeCheck: Boolean,
     notSetUnchange: Array,
-    log: Boolean
+    log: {
+      type: Boolean,
+      default: true
+    }
   },
 
   watch: {
@@ -141,7 +149,7 @@ export default {
     },
 
     chartColor () {
-      return this.colors || (this.theme && this.theme.color) || DEFAULT_COLORS
+      return []
     }
   },
 
@@ -287,7 +295,7 @@ export default {
 
     init () {
       if (this.echarts) return
-      const themeName = this.themeName || this.theme || DEFAULT_THEME
+      const themeName = this.themeName || this.theme || {}
       this.echarts = echartsLib.init(this.$refs.canvas, themeName, this.initOptions)
       if (this.data) this.changeHandler()
       this.createEventProxy()

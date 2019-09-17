@@ -57,7 +57,7 @@ Modern browsers and Internet Explorer 10+, include pc and mobile browser.
 ## Install
 
 ```
-npm i v-charts echarts -S
+npm i v-echartsjs -S
 ```
 
 ## Start

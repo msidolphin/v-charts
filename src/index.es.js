@@ -55,7 +55,7 @@ function initThemes (Vue, options) {
   if (options.themes) {
     registerTheme(options.themes)
   }
-  Vue.prototype.$THEME = options.theme ? options.theme : 'walden'
+  Vue.prototype.$THEME = options.theme ? options.theme : 'default'
 }
 
 function install (Vue, options = {}) {

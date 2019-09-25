@@ -103,7 +103,7 @@ export default {
     notSetUnchange: Array,
     log: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
 

@@ -4,8 +4,8 @@ import { isArray } from 'utils-lite'
 
 const DEFAULT_MA = [5, 10, 20, 30]
 const DEFAULT_K_NAME = '日K'
-const DEFAULT_DOWN_COLOR = '#ec0000'
-const DEFAULT_UP_COLOR = '#00da3c'
+const DEFAULT_DOWN_COLOR = '#e6a0d2'
+const DEFAULT_UP_COLOR = '#3fb1e3'
 const DEFAULT_START = 50
 const DEFAULT_END = 100
 const SHOW_FALSE = { show: false }

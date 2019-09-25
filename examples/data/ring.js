@@ -5,17 +5,54 @@ export default {
     {
       name: '简单环图',
       data: {
-        columns: ['日期', '余额', '年龄'],
+        columns: ['年龄', '人数'],
         rows: [
-          { '日期': '1-1', '余额': 123, '年龄': 3 },
-          { '日期': '1-2', '余额': 1223, '年龄': 6 },
-          { '日期': '1-3', '余额': 2123, '年龄': 9 },
-          { '日期': '1-4', '余额': 4123, '年龄': 12 },
-          { '日期': '1-5', '余额': 3123, '年龄': 15 },
-          { '日期': '1-6', '余额': 7123, '年龄': 20 }
+          { '年龄': '18~25岁', '人数': 76 },
+          { '年龄': '26~45岁', '人数': 56},
+          { '年龄': '45~55岁', '人数': 40 },
+          { '年龄': '55岁以上', '人数': 28 }
         ]
       },
-      settings: {}
+      settings: {
+        label: {
+          show: false
+        }
+      },
+      extend: {
+        title: {
+          text: '200',
+          subtext: '（人）',
+          x: 'center',
+          y: 'center',
+          textStyle: {
+            fontWeight: 'normal',
+            fontSize: 24
+          }
+        },
+        legend: {
+          orient: 'right',
+          left: '60%',
+          top: 'center',
+          formatter (name) {
+            let data =  [
+              { '年龄': '18~25岁', '人数': 76 },
+              { '年龄': '26~45岁', '人数': 56},
+              { '年龄': '45~55岁', '人数': 40 },
+              { '年龄': '55岁以上', '人数': 28 }
+            ]
+            let total = 0;
+            let tarValue = 0;
+            for (let i = 0, l = data.length; i < l; i++) {
+                total += data[i]['人数']
+                if (data[i]['年龄'] == name) {
+                    tarValue = data[i]['人数']
+                }
+            }
+            let p = (tarValue / total * 100).toFixed(2)
+            return `${name} ${tarValue}人 ${p}%`
+          }
+        }
+      }
     },
     {
       name: '玫瑰图',

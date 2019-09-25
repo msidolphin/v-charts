@@ -5,7 +5,9 @@ import VCharts from '../src/index.es'
 import CodeSection from './components/code-section'
 
 Vue.component(CodeSection.name, CodeSection)
-Vue.use(VCharts)
+Vue.use(VCharts, {
+  theme: 'default'
+})
 
 /* eslint-disable no-new */
 new Vue({

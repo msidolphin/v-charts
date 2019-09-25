@@ -6,7 +6,8 @@
         <component
           :is="`ve-${innerType}`"
           :data="d.data"
-          :settings="d.settings">
+          :settings="d.settings"
+          :extend="d.extend ? d.extend : {}">
         </component>
       </div>
       <div class="code-view">
@@ -17,6 +18,10 @@
         <p>配置项</p>
         <div class="setting-code">
           <code-section :content="d.settings" json></code-section>
+        </div>
+        <p>extend配置</p>
+        <div class="setting-code">
+          <code-section :content="d.extend ? d.extend : {}" json></code-section>
         </div>
       </div>
     </div>
